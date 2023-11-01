@@ -1,0 +1,20 @@
+{
+  "name": "tistory-html-in-action",
+  "version": "1.0.0",
+  "description": "tistory html block",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paikpaik/tistory-html-in-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paikpaik/tistory-html-in-action/issues"
+  },
+  "homepage": "https://github.com/paikpaik/tistory-html-in-action#readme"
+}

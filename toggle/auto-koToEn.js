@@ -1,0 +1,73 @@
+const fs = require("fs");
+const path = require("path");
+const { sentencePairs } = require("./sentencePairs");
+
+const autoSentenceDir = path.join(__dirname, "sentence");
+
+if (!fs.existsSync(autoSentenceDir)) {
+  fs.mkdirSync(autoSentenceDir);
+}
+
+sentencePairs.forEach((pair, index) => {
+  const html = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dandy Details</title>
+    <style>
+      /* 삼각형 아이콘 숨김 */
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      /* 외부 디자인 변경 */
+      details {
+        border: 1px solid #b67b15;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #dac290e1;
+      }
+      /* 내부 디자인 변경 */
+      summary {
+        font-size: 20px;
+        background-color: #f1e1c3;
+        color: #b67b15;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        user-select: none;
+        outline: none;
+        text-align: center;
+        font-family: Arial, sans-serif; /* 원하는 글꼴 설정 */
+        font-weight: bold;
+      }
+      /* 확장된 상태에서 디자인 변경 */
+      details[open] summary {
+        background-color: #f1e1c3;
+      }
+      /* toc 내부 디자인 변경 */
+      #toc {
+        text-align: center;
+        margin-bottom: 0;
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="book-toc">
+      <details>
+        <summary><p data-ke-size="size16">${pair.sentence}</p></summary>
+        <ul id="toc">
+          <li>${pair.translation}</li>
+        </ul>
+      </details>
+    </div>
+  </body>
+</html>
+  `;
+  const filePath = path.join(autoSentenceDir, `sentence${index}Block.html`);
+  fs.writeFileSync(filePath, html);
+});
