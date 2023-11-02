@@ -68,6 +68,6 @@ sentencePairs.forEach((pair, index) => {
   </body>
 </html>
   `;
-  const filePath = path.join(autoSentenceDir, `sentence${index}Block.html`);
+  const filePath = path.join(autoSentenceDir, `sentence${index + 1}Block.html`);
   fs.writeFileSync(filePath, html);
 });
